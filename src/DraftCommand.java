@@ -1,4 +1,5 @@
 public class DraftCommand extends Commands implements CommandInterface {
+
     public void executeCommand() {
         System.out.println("We are in " + this.getCommandName() + " and it's the option number " + this.getCommandNb());
     }

@@ -1,4 +1,5 @@
 public abstract class Commands {
+
     private String commandName;
     private int     commandNb;
 

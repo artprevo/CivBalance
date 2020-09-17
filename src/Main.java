@@ -22,6 +22,26 @@ public class Main {
         boolean start = false;
         List<Civ> civList = new ArrayList<Civ>();
 
+        civList.add(testCiv("Mongolia", "Genghis Khan", 1, 4, 1, 1));
+        civList.add(testCiv("Mayans", "Lady Six Skies", 1, 2, 4, 1));
+        civList.add(testCiv("Russia", "Peter", 4, 2, 3, 1));
+        civList.add(testCiv("India", "Gandhi", 2, 3, 3, 1));
+        civList.add(testCiv("Japan", "Hojo Tokimune", 2, 2, 4, 3));
+        civList.add(testCiv("Ethiopia", "Menelik 2", 2, 1, 3, 1));
+        civList.add(testCiv("Sweden", "Kristina", 4, 1, 3, 1));
+        civList.add(testCiv("Rome", "Trajan", 2, 3, 2, 1));
+        civList.add(testCiv("China", "Qin Shi Huangxi", 4, 1, 1, 1));
+        civList.add(testCiv("Cree", "Poundmaker", 1, 1, 4, 1));
+        civList.add(testCiv("France", "Catherine the Black Queen", 2, 4, 1, 2));
+        civList.add(testCiv("Maori", "Kupe", 2, 2, 3, 3));
+        civList.add(testCiv("Persia", "Cyrus", 2, 3, 2, 2));
+        civList.add(testCiv("Germany", "Frederik", 1, 1, 4, 1));
+        civList.add(testCiv("Zulu", "Shaka", 2, 4, 1, 1));
+        civList.add(testCiv("Mapuche", "Lautaro", 2, 3, 1, 2));
+        civList.add(testCiv("Carthage", "Dido", 1, 1, 4, 3));
+        civList.add(testCiv("England", "Victoria", 1, 2, 2, 4));
+        civList.add(testCiv("Norway", "Harald", 2, 2, 2, 3));
+
         System.out.println("Welcome to CivBalance, please choose an option : ");
 
         while (true) {
@@ -42,7 +62,7 @@ public class Main {
                     civList.add(new_civ);
                     break;
                 case 3:
-                    civLadder.executeCommand();
+                    civLadder.executeCommand(civList);
                     break;
                 case 4:
                     draft.executeCommand();
@@ -54,5 +74,16 @@ public class Main {
             }
             start = true;
         }
+    }
+
+    private static Civ testCiv(String civName, String leaderName, int cS, int wS, int sS, int nS) {
+        Civ new_civ = new Civ();
+        new_civ.setCivName(civName);
+        new_civ.setLeaderName(leaderName);
+        new_civ.setCultureScore(cS);
+        new_civ.setWarScore(wS);
+        new_civ.setSimScore(sS);
+        new_civ.setNavalScore(nS);
+        return new_civ;
     }
 }

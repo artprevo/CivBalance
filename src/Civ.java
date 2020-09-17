@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Civ {
+
     private String civName;
     private String leaderName;
     private int cultureScore;
@@ -10,7 +11,7 @@ public class Civ {
     private int navalScore;
 
     public int getGlobalScore() {
-        return (cultureScore + simScore + warScore + navalScore) / 4;
+        return (cultureScore + simScore + warScore + navalScore);
     }
 
     public int getCultureScore() {
