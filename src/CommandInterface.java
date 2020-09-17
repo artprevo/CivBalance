@@ -1,7 +1,7 @@
 public interface CommandInterface {
-    public String getCommandName();
-    public void setCommandName();
-    public int getCommandNb();
-    public void setCommandNb();
-    public void initializeCommand();
+    String getCommandName();
+    void setCommandName();
+    int getCommandNb();
+    void setCommandNb();
+    void initializeCommand();
 }

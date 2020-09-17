@@ -2,10 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class Main {
 
-    public static void main (String[] args) {
-        List<Civ> civList = new ArrayList<Civ>();
+    public static void main(String[] args) {
+
         StatusCommand statusCommand = new StatusCommand();
         CivLadderCommand civLadder = new CivLadderCommand();
         AddCivCommand addCiv = new AddCivCommand();
@@ -16,28 +18,41 @@ public class Main {
         addCiv.initializeCommand();
         draft.initializeCommand();
 
-        System.out.println("Bienvenue sur CivBalance, veuillez choisir une option:");
         Scanner scanner = new Scanner(System.in);
-        int choice = 0;
-        while (choice != 5) {
-            if (choice != 0)
-                System.out.println("Veuillez choisir une option:");
+        boolean start = false;
+        List<Civ> civList = new ArrayList<Civ>();
+
+        System.out.println("Welcome to CivBalance, please choose an option : ");
+
+        while (true) {
+            if (start)
+                System.out.println("Please choose an option : ");
             System.out.printf("%d : %s | %d : %s | %d : %s | %d : %s | %d : %s\n",
                     statusCommand.getCommandNb(), statusCommand.getCommandName(),
                     addCiv.getCommandNb(), addCiv.getCommandName(),
                     civLadder.getCommandNb(), civLadder.getCommandName(),
                     draft.getCommandNb(), draft.getCommandName(),
                     5, "exit");
-            choice = scanner.nextInt();
-            if (choice == 1)
-                statusCommand.executeCommand();
-            if (choice == 2)
-                addCiv.executeCommand();
-            if (choice == 3)
-                civLadder.executeCommand();
-            if (choice == 4)
-                draft.executeCommand();
+            switch (scanner.nextInt()) {
+                case 1:
+                    statusCommand.executeCommand(civList);
+                    break;
+                case 2:
+                    Civ new_civ = addCiv.executeCommand();
+                    civList.add(new_civ);
+                    break;
+                case 3:
+                    civLadder.executeCommand();
+                    break;
+                case 4:
+                    draft.executeCommand();
+                    break;
+                case 5:
+                    System.out.println("Goodbye my friend");
+                    exit(0);
+                default:
+            }
+            start = true;
         }
-        System.out.println("Goodbye my friend");
     }
 }

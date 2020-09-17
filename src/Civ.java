@@ -8,10 +8,9 @@ public class Civ {
     private int simScore;
     private int warScore;
     private int navalScore;
-    private int globalScore = (cultureScore + simScore + warScore + navalScore) / 4;
 
     public int getGlobalScore() {
-        return globalScore;
+        return (cultureScore + simScore + warScore + navalScore) / 4;
     }
 
     public int getCultureScore() {
