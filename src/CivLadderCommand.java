@@ -2,6 +2,7 @@ import java.util.*;
 
 public class CivLadderCommand extends Commands implements CommandInterface {
 
+//    Allow user to chose different options from a menu, each going to sort the civ list based on a specific field
     public void executeCommand(List<Civ> civList) {
         System.out.println("Please choose how to order civs : ");
         boolean var = false;
@@ -9,7 +10,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
             System.out.println("1 : by global_score | 2 : by culture | 3 : by war | 4 : by sim | 5 : by naval | 6 : add a map | 7 : return");
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
-                case 1 -> {
+                case 1 -> { // globalScore
                     System.out.println("By global score : ");
                     civList.sort(new Comparator<Civ>() {
                         @Override
@@ -21,7 +22,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
                         System.out.println(i + ". " + civList.get(i - 1).getCivName() + " with a score of " + civList.get(i - 1).getGlobalScore());
                     }
                 }
-                case 2 -> {
+                case 2 -> { // cultureScore
                     System.out.println("By culture score : ");
                     civList.sort(new Comparator<Civ>() {
                         @Override
@@ -33,7 +34,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
                         System.out.println(i + ". " + civList.get(i - 1).getCivName() + " with a score of " + civList.get(i - 1).getCultureScore());
                     }
                 }
-                case 3 -> {
+                case 3 -> { // warScore
                     System.out.println("By war score : ");
                     civList.sort(new Comparator<Civ>() {
                         @Override
@@ -45,7 +46,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
                         System.out.println(i + ". " + civList.get(i - 1).getCivName() + " with a score of " + civList.get(i - 1).getWarScore());
                     }
                 }
-                case 4 -> {
+                case 4 -> { // simScore
                     System.out.println("By sim score : ");
                     civList.sort(new Comparator<Civ>() {
                         @Override
@@ -57,7 +58,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
                         System.out.println(i + ". " + civList.get(i - 1).getCivName() + " with a score of " + civList.get(i - 1).getSimScore());
                     }
                 }
-                case 5 -> {
+                case 5 -> { // navalScore
                     System.out.println("By naval score : ");
                     civList.sort(new Comparator<Civ>() {
                         @Override
@@ -76,6 +77,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
         }
     }
 
+//    Change the value of fields in every Civ Object, user choose which map and it changes values
     public void addModifier(List<Civ> civList) {
         System.out.println("Please choose a map : ");
         System.out.println("1 : Pangea | 2 : Continents | 3 : 7 seas | 4 : Intern Sea | 5 : return");
@@ -110,6 +112,7 @@ public class CivLadderCommand extends Commands implements CommandInterface {
         }
     }
 
+//    just getters and setters
     @Override
     public void setCommandName() {
         super.setCommandName("civ_ladder");

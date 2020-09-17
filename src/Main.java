@@ -7,21 +7,9 @@ import static java.lang.System.exit;
 public class Main {
 
     public static void main(String[] args) {
-
-        StatusCommand statusCommand = new StatusCommand();
-        CivLadderCommand civLadder = new CivLadderCommand();
-        AddCivCommand addCiv = new AddCivCommand();
-        DraftCommand draft = new DraftCommand();
-
-        statusCommand.initializeCommand();
-        civLadder.initializeCommand();
-        addCiv.initializeCommand();
-        draft.initializeCommand();
-
-        Scanner scanner = new Scanner(System.in);
-        boolean start = false;
         List<Civ> civList = new ArrayList<Civ>();
 
+        // Just implementing some civs b4 working w/ DB
         civList.add(testCiv("Mongolia", "Genghis Khan", 1, 4, 1, 1));
         civList.add(testCiv("Mayans", "Lady Six Skies", 1, 2, 4, 1));
         civList.add(testCiv("Russia", "Peter", 4, 2, 3, 1));
@@ -42,9 +30,23 @@ public class Main {
         civList.add(testCiv("England", "Victoria", 1, 2, 2, 4));
         civList.add(testCiv("Norway", "Harald", 2, 2, 2, 3));
 
+        StatusCommand statusCommand = new StatusCommand();
+        CivLadderCommand civLadder = new CivLadderCommand();
+        AddCivCommand addCiv = new AddCivCommand();
+        DraftCommand draft = new DraftCommand();
+
+        statusCommand.initializeCommand();
+        civLadder.initializeCommand();
+        addCiv.initializeCommand();
+        draft.initializeCommand();
+
+        Scanner scanner = new Scanner(System.in);
+        boolean start = false;
+
         System.out.println("Welcome to CivBalance, please choose an option : ");
 
         while (true) {
+//            This is the menu
             if (start)
                 System.out.println("Please choose an option : ");
             System.out.printf("%d : %s | %d : %s | %d : %s | %d : %s | %d : %s\n",
@@ -54,20 +56,20 @@ public class Main {
                     draft.getCommandNb(), draft.getCommandName(),
                     5, "exit");
             switch (scanner.nextInt()) {
-                case 1:
+                case 1: // status
                     statusCommand.executeCommand(civList);
                     break;
-                case 2:
+                case 2: // add a civ
                     Civ new_civ = addCiv.executeCommand();
                     civList.add(new_civ);
                     break;
-                case 3:
+                case 3: // Choice of ladder
                     civLadder.executeCommand(civList);
                     break;
-                case 4:
+                case 4: // help to draft
                     draft.executeCommand();
                     break;
-                case 5:
+                case 5: // exit
                     System.out.println("Goodbye my friend");
                     exit(0);
                 default:
@@ -76,6 +78,7 @@ public class Main {
         }
     }
 
+    // function to work without DB for now
     private static Civ testCiv(String civName, String leaderName, int cS, int wS, int sS, int nS) {
         Civ new_civ = new Civ();
         new_civ.setCivName(civName);

@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class StatusCommand extends Commands implements CommandInterface {
 
+    // Show the state of virtual database with 2 options : only names of civ objects or every fields
     public void executeCommand(List<Civ> civList) {
         System.out.println("You registered " + civList.size() + " civilizations, please choose an option : ");
         boolean var = false;
@@ -11,12 +12,12 @@ public class StatusCommand extends Commands implements CommandInterface {
             System.out.println("1 : show all civs | 2 : show all with details | 3 : return");
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
-                case 1:
+                case 1: // only civName
                     for (Civ civ : civList) {
                         System.out.println(civ.getCivName() + " ");
                     }
                     break;
-                case 2:
+                case 2: // every fields
                     for (Civ civ : civList) {
                         System.out.printf("%s lead by %s has %d culture_score, %d war_score, %d sim_score, " +
                                         "%d naval_score, and %d of global_score\n",
@@ -30,6 +31,9 @@ public class StatusCommand extends Commands implements CommandInterface {
             }
         }
     }
+
+  /*  the code below is for an edit feature that i'll code later
+    */
 
 //    private void civEdit(List<Civ> civList) {
 //        Scanner scanner = new Scanner(System.in);
@@ -64,6 +68,7 @@ public class StatusCommand extends Commands implements CommandInterface {
 //        }
 //    }
 
+    // just getters and setters
     @Override
     public void setCommandName() {
         super.setCommandName("status");

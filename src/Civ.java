@@ -10,6 +10,9 @@ public class Civ {
     private int warScore;
     private int navalScore;
 
+//    Maybe more to come, how to deal with draft ? maybe add fields : ban, picked;
+
+    // just getters and setters
     public int getGlobalScore() {
         return (cultureScore + simScore + warScore + navalScore);
     }

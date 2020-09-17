@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class AddCivCommand extends Commands implements CommandInterface {
+
+//    This method ask user to enter manually every fields of a Civ Object, and return it into the civList
+//    declared in Main.java.
     public Civ executeCommand() {
         Civ new_civ = new Civ();
         new_civ.setCivName(getName("civ"));
@@ -12,12 +15,14 @@ public class AddCivCommand extends Commands implements CommandInterface {
         return new_civ;
     }
 
+//    Ask User to declare name for civ object
     public String getName(String type) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Pls type the " + type + " name : ");
         return scanner.nextLine();
     }
 
+//    same but for score
     public int getScore(String type) {
         int x = 0;
         Scanner scanner = new Scanner(System.in);
@@ -29,6 +34,7 @@ public class AddCivCommand extends Commands implements CommandInterface {
         return x;
     }
 
+//    just getters and setters
     @Override
     public void setCommandName() {
         super.setCommandName("add_Civ");
