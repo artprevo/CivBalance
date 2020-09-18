@@ -1,4 +1,6 @@
-public abstract class Commands implements CommandInterface{
+package commands;
+
+public abstract class Commands implements CommandInterface {
 
     private String commandName;
     private int     commandNb;

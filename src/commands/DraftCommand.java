@@ -1,4 +1,6 @@
-public class DraftCommand extends Commands implements CommandInterface {
+package commands;
+
+public class DraftCommand extends Commands {
 
 //    Last part of the menu not done, WIP
 

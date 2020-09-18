@@ -1,6 +1,10 @@
+package commands;
+
+import model.Civ;
+
 import java.util.Scanner;
 
-public class AddCivCommand extends Commands implements CommandInterface {
+public class AddCivCommand extends Commands {
 
 //    This method ask user to enter manually every fields of a Civ Object, and return it into the civList
 //    declared in Main.java.

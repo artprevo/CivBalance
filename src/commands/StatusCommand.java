@@ -1,8 +1,11 @@
-import java.util.ArrayList;
+package commands;
+
+import model.Civ;
+
 import java.util.List;
 import java.util.Scanner;
 
-public class StatusCommand extends Commands implements CommandInterface {
+public class StatusCommand extends Commands {
 
     // Show the state of virtual database with 2 options : only names of civ objects or every fields
     public void executeCommand(List<Civ> civList) {

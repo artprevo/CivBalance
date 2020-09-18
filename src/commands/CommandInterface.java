@@ -1,3 +1,5 @@
+package commands;
+
 public interface CommandInterface {
     String getCommandName();
     void setCommandName();
