@@ -1,6 +1,10 @@
+package commands;
+
+import model.Civ;
+
 import java.util.*;
 
-public class CivLadderCommand extends Commands implements CommandInterface {
+public class CivLadderCommand extends Commands {
 
 //    Allow user to chose different options from a menu, each going to sort the civ list based on a specific field
     public void executeCommand(List<Civ> civList) {
@@ -121,12 +125,6 @@ public class CivLadderCommand extends Commands implements CommandInterface {
     @Override
     public void setCommandNb() {
         super.setCommandNb(3);
-    }
-
-    @Override
-    public void initializeCommand() {
-        this.setCommandName();
-        this.setCommandNb();
     }
 
     @Override

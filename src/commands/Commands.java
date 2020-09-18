@@ -1,7 +1,13 @@
-public abstract class Commands {
+package commands;
+
+public abstract class Commands implements CommandInterface {
 
     private String commandName;
     private int     commandNb;
+
+    public Commands(){
+        this.initializeCommand();
+    }
 
     public String getCommandName() {
         return commandName;
@@ -17,5 +23,10 @@ public abstract class Commands {
 
     public void setCommandNb(int commandNb) {
         this.commandNb = commandNb;
+    }
+
+    public void initializeCommand() {
+        this.setCommandName();
+        this.setCommandNb();
     }
 }

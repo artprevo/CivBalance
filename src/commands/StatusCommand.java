@@ -1,8 +1,11 @@
-import java.util.ArrayList;
+package commands;
+
+import model.Civ;
+
 import java.util.List;
 import java.util.Scanner;
 
-public class StatusCommand extends Commands implements CommandInterface {
+public class StatusCommand extends Commands {
 
     // Show the state of virtual database with 2 options : only names of civ objects or every fields
     public void executeCommand(List<Civ> civList) {
@@ -32,8 +35,7 @@ public class StatusCommand extends Commands implements CommandInterface {
         }
     }
 
-  /*  the code below is for an edit feature that i'll code later
-    */
+  /*  the code below is for an edit feature that i'll code later */
 
 //    private void civEdit(List<Civ> civList) {
 //        Scanner scanner = new Scanner(System.in);
@@ -77,12 +79,6 @@ public class StatusCommand extends Commands implements CommandInterface {
     @Override
     public void setCommandNb() {
         super.setCommandNb(1);
-    }
-
-    @Override
-    public void initializeCommand() {
-        this.setCommandName();
-        this.setCommandNb();
     }
 
     @Override

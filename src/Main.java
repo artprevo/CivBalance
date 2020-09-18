@@ -1,3 +1,9 @@
+import commands.AddCivCommand;
+import commands.CivLadderCommand;
+import commands.DraftCommand;
+import commands.StatusCommand;
+import model.Civ;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,11 +40,6 @@ public class Main {
         CivLadderCommand civLadder = new CivLadderCommand();
         AddCivCommand addCiv = new AddCivCommand();
         DraftCommand draft = new DraftCommand();
-
-        statusCommand.initializeCommand();
-        civLadder.initializeCommand();
-        addCiv.initializeCommand();
-        draft.initializeCommand();
 
         Scanner scanner = new Scanner(System.in);
         boolean start = false;

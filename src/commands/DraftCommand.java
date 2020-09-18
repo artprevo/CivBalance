@@ -1,4 +1,6 @@
-public class DraftCommand extends Commands implements CommandInterface {
+package commands;
+
+public class DraftCommand extends Commands {
 
 //    Last part of the menu not done, WIP
 
@@ -14,12 +16,6 @@ public class DraftCommand extends Commands implements CommandInterface {
     @Override
     public void setCommandNb() {
         super.setCommandNb(4);
-    }
-
-    @Override
-    public void initializeCommand() {
-        this.setCommandName();
-        this.setCommandNb();
     }
 
     @Override
