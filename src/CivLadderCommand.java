@@ -124,12 +124,6 @@ public class CivLadderCommand extends Commands implements CommandInterface {
     }
 
     @Override
-    public void initializeCommand() {
-        this.setCommandName();
-        this.setCommandNb();
-    }
-
-    @Override
     public String getCommandName() {
         return super.getCommandName();
     }

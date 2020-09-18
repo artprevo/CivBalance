@@ -45,9 +45,4 @@ public class AddCivCommand extends Commands implements CommandInterface {
         super.setCommandNb(2);
     }
 
-    @Override
-    public void initializeCommand() {
-        this.setCommandName();
-        this.setCommandNb();
-    }
 }

@@ -35,11 +35,6 @@ public class Main {
         AddCivCommand addCiv = new AddCivCommand();
         DraftCommand draft = new DraftCommand();
 
-        statusCommand.initializeCommand();
-        civLadder.initializeCommand();
-        addCiv.initializeCommand();
-        draft.initializeCommand();
-
         Scanner scanner = new Scanner(System.in);
         boolean start = false;
 

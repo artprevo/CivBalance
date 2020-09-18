@@ -32,8 +32,7 @@ public class StatusCommand extends Commands implements CommandInterface {
         }
     }
 
-  /*  the code below is for an edit feature that i'll code later
-    */
+  /*  the code below is for an edit feature that i'll code later */
 
 //    private void civEdit(List<Civ> civList) {
 //        Scanner scanner = new Scanner(System.in);
@@ -77,12 +76,6 @@ public class StatusCommand extends Commands implements CommandInterface {
     @Override
     public void setCommandNb() {
         super.setCommandNb(1);
-    }
-
-    @Override
-    public void initializeCommand() {
-        this.setCommandName();
-        this.setCommandNb();
     }
 
     @Override
