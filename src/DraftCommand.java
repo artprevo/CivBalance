@@ -4,7 +4,7 @@ public class DraftCommand extends Commands {
 
 //    Last part of the menu not done, WIP
 
-    public void executeCommand() {
+    public void executeCommand(User user) {
         System.out.println("We are in " + this.getCommandName() + " and it's the option number " + this.getCommandNb());
     }
 
@@ -15,7 +15,7 @@ public class DraftCommand extends Commands {
 
     @Override
     public void setCommandNb() {
-        super.setCommandNb(4);
+        super.setCommandNb(3);
     }
 
     @Override
