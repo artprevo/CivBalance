@@ -2,12 +2,13 @@ import java.sql.*;
 
 public class RequeteSql {
 
+    private final String url = "jdbc:mysql://localhost:3306/civbalance?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+    private final String user = "root";
+    private final String password = "dota2010";
+
     public ResultSet executeQuery (String requete) {
         Connection myConn = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/civbalance?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&autoReconnect=true&useSSL=false";
-            String user = "root";
-            String password = "dota2010";
             myConn = DriverManager.getConnection(url, user, password);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -32,14 +33,11 @@ public class RequeteSql {
     public void executeUpdate (String requete) {
         Connection myConn = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/civbalance?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&autoReconnect=true&useSSL=false";
-            String user = "root";
-            String password = "dota2010";
             myConn = DriverManager.getConnection(url, user, password);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        Statement myStat = null;
+        Statement myStat;
         try {
             assert myConn != null;
             myStat = myConn.createStatement();
