@@ -27,8 +27,7 @@ public class Main {
                 String sql = "SELECT * FROM civbalance.user WHERE username = " + "'" + username + "'";
                 try (ResultSet rs = user_name.executeQuery(sql)) {
                     System.out.println("password : ");
-                    String password = scanner.nextLine();
-                    while (rs.next()) if (password.equals(rs.getString("password"))) {
+                    while (rs.next()) if (scanner.nextLine().equals(rs.getString("password"))) {
                         login = true;
                         user.setUsername(username);
                         user.setPassword(rs.getString("password"));
@@ -37,7 +36,6 @@ public class Main {
                     else
                         System.out.println("Nope, try again");
                 }
-                System.out.println("Nope, try again");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -62,7 +60,6 @@ public class Main {
 
         while (true)
         {
-    //            This is the menu
             if (start)
                 System.out.println("Please choose an option : ");
             System.out.printf("%d : %s | %d : %s | %d : %s | %d : %s\n",

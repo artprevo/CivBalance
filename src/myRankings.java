@@ -1,36 +1,33 @@
+import org.jetbrains.annotations.NotNull;
+
 import java.sql.*;
 import java.util.Scanner;
 
-public class StatusCommand extends Commands {
+public class myRankings extends Commands implements CommandInterface {
 
     public void executeCommand(User user) throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/civbalance?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&autoReconnect=true&useSSL=false";
-        try (Connection myConn = DriverManager.getConnection(url, "root", "dota2010")) {
-            Statement myStat = myConn.createStatement();
-            StringBuilder requete = new StringBuilder("");
-            requete.append("select name from ranking natural join civ where user_id = ")
-                    .append(user.getUser_id());
-            ResultSet rs = myStat.executeQuery(requete.toString());
-            while (rs.next()) {
-                    System.out.println(rs.getString("name"));
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        boolean tierListDone = true;
+        ResultSet rs  = exeQuery("SELECT * FROM civbalance.civ");
+        while (rs.next()) {
+            if (already_ranked(user, rs.getInt("civ_id")))
+                tierListDone = false;
         }
+        menu(user, tierListDone);
     }
 
-    public void menu(User user, boolean tierListDone) {
-
+    public void menu(User user, boolean tierListDone) throws SQLException {
         if (tierListDone)
-            System.out.println(user.getUsername() + "you did make a tierList, please choose an option : ");
+            System.out.println(user.getUsername() + " you did finish your tierList, please choose an option : ");
         else
-            rank_a_civ(user);
+            createTierList(user);
         boolean var = false;
         while (!var) {
-            System.out.println("1 : show all civs | 2 : show all with details | 3 : return");
+            System.out.println("1 : show your ranking | 2 : edit your ranking | 3 : return");
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
                 case 1:
+                    Print print = new Print();
+                    print.printRankingList(user);
                     break;
                 case 2:
                     break;
@@ -41,16 +38,24 @@ public class StatusCommand extends Commands {
         }
     }
 
-    public void rank_a_civ(User user) {
-        String url = "jdbc:mysql://localhost:3306/civbalance?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC&autoReconnect=true&useSSL=false";
-        try (Connection myConn = DriverManager.getConnection(url, "root", "dota2010")) {
-            Statement myStat = myConn.createStatement();
-            String sql = "SELECT * FROM civbalance.civ";
-            ResultSet rs = myStat.executeQuery(sql);
+    public void createTierList(User user) throws SQLException {
+        RequeteSql RS = new RequeteSql();
+        Input input = new Input();
+        ResultSet rs = exeQuery("SELECT * FROM civbalance.civ");
+       while (rs.next()) {
+           if (already_ranked(user, rs.getInt("civ_id"))) {
+               System.out.println("Choose a tier for " + rs.getString("name") + " (" + rs.getString("leader") + ") FROM 1 to 7");
+               int tierChosen = input.tierInput();
+               System.out.println(tierChosen);
+               RS.executeUpdate("INSERT INTO `ranking` (civ_id, tier_id, user_id) VALUES (" + rs.getInt("civ_id") + "," + tierChosen + "," + user.getUser_id() + ")");
+           }
+       }
+    }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    // check if a civ has been ranked by this user
+    public boolean already_ranked(@NotNull User user, int civ_id) throws SQLException {
+        ResultSet rs = exeQuery("SELECT * FROM ranking WHERE user_id = " + user.getUser_id() + " and civ_id = " + civ_id);
+        return !rs.next();
     }
 
     @Override
